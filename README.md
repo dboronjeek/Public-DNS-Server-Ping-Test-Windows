@@ -85,7 +85,3 @@ Fastest server: Cloudflare 1.1.1.1 with 18ms
 No additional software or dependencies are required.
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
