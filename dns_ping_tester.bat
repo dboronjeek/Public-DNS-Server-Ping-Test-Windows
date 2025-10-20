@@ -56,14 +56,6 @@ CALL:ComparePing %ms% "Alternate DNS 76.76.19.19"
 ECHO * Alternate DNS 76.76.19.19:    %ms%
 CALL:IP 76.223.122.150
 CALL:ComparePing %ms% "Alternate DNS 76.223.122.150"
-ECHO * Alternate DNS 76.223.122.150: %ms%
-ECHO ===============================================
-ECHO The best server is: %best_server% with %min_ms%
-ECHO ===============================================
-ECHO.
-ECHO ** Test Done! **
-ECHO.
-ECHO.
   
 PAUSE
 GOTO:EOF
