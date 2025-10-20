@@ -11,7 +11,6 @@ A simple Windows batch script to test the latency of various public DNS servers 
 * [Usage](#usage)
 * [How It Works](#how-it-works)
 * [Requirements](#requirements)
-* [License](#license)
 
 ---
 
