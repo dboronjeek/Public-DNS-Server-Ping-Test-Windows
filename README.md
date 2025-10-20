@@ -1,81 +1,29 @@
-@ECHO OFF
-ECHO ===============================================
-SET "min_ms=9999"
-SET "best_server="
-CALL:IP 8.8.8.8
-CALL:ComparePing %ms% "Google 8.8.8.8"
-ECHO * Google 8.8.8.8:               %ms%
-CALL:IP 8.8.4.4
-CALL:ComparePing %ms% "Google 8.8.4.4"
-ECHO * Google 8.8.4.4:               %ms%
-ECHO ===============================================
-CALL:IP 76.76.2.0
-CALL:ComparePing %ms% "Control D 76.76.2.0"
-ECHO * Control D    76.76.2.0:       %ms%
-CALL:IP 76.76.10.0
-CALL:ComparePing %ms% "Quad9 149.112.112.112"
-ECHO * Control D 76.76.10.0:         %ms%
-ECHO ===============================================
-CALL:IP 9.9.9.9
-CALL:ComparePing %ms% "Quad9 9.9.9.9"
-ECHO * Quad9 9.9.9.9:                %ms%
-CALL:IP 149.112.112.112
-CALL:ComparePing %ms% "Quad9 149.112.112.112"
-ECHO * Quad9 149.112.112.112:        %ms%
-ECHO ===============================================
-CALL:IP 208.67.222.222    
-CALL:ComparePing %ms% "OpenDNS Home 208.67.222.222"
-ECHO * OpenDNS Home 208.67.222.222:  %ms%
-CALL:IP 208.67.220.220
-CALL:ComparePing %ms% "OpenDNS 208.67.220.220"
-ECHO * OpenDNS 208.67.220.220:       %ms%
-ECHO ===============================================
-CALL:IP 1.1.1.1
-CALL:ComparePing %ms% "Cloudflare 1.1.1.1"
-ECHO * Cloudflare 1.1.1.1:           %ms%
-CALL:IP 1.0.0.1
-CALL:ComparePing %ms% "Cloudflare 1.0.0.1"
-ECHO * Cloudflare 1.0.0.1:           %ms%
-ECHO ===============================================
-CALL:IP 94.140.14.14
-CALL:ComparePing %ms% "AdGuard DNS 94.140.14.14"
-ECHO * AdGuard DNS 94.140.14.14:     %ms%
-CALL:IP 94.140.15.15
-CALL:ComparePing %ms% "AdGuard DNS 94.140.15.15"
-ECHO * AdGuard DNS 94.140.15.15:     %ms%
-ECHO ===============================================
-CALL:IP 185.228.168.9
-CALL:ComparePing %ms% "CleanBrowsing 185.228.168.9"
-ECHO * CleanBrowsing 185.228.168.9:  %ms%
-CALL:ComparePing %ms% "CleanBrowsing 185.228.169.9"
-CALL:IP 185.228.169.9
-ECHO * CleanBrowsing 185.228.169.9:  %ms%
-ECHO ===============================================
-CALL:IP 76.76.19.19
-CALL:ComparePing %ms% "Alternate DNS 76.76.19.19"
-ECHO * Alternate DNS 76.76.19.19:    %ms%
-CALL:IP 76.223.122.150
-CALL:ComparePing %ms% "Alternate DNS 76.223.122.150"
-ECHO * Alternate DNS 76.223.122.150: %ms%
-ECHO ===============================================
-ECHO The best server is: %best_server% with %min_ms%
-ECHO ===============================================
-ECHO.
-ECHO ** Test Done! **
-ECHO.
-ECHO.
-  
-PAUSE
-GOTO:EOF
-
-:IP
-SET ms=# RTO #
-FOR /F "tokens=4 delims==" %%i IN ('ping.exe -n 1 %1 ^| FIND "ms"') DO SET ms=%%i
-GOTO:EOF
-
-:ComparePing
-IF "%1" LSS "%min_ms%" (
-    SET "min_ms=%1"
-    SET "best_server=%~2"
-)
-GOTO:EOF
+■ DNS Ping Tester (Batch Script)
+A simple Windows batch script that pings multiple popular DNS servers, averages the ping results,
+and displays the fastest servers ranked from best to worst. Ideal for quickly finding which DNS
+resolver performs best on your network.
+■ Features
+- Pings each DNS server 10 times and calculates the average ping
+- Automatically compares results to find the best server
+- Displays a ranked list (fastest → slowest)
+- Repeats automatically — just press any key to run another test
+- Works entirely offline using native Windows ping and sort commands
+■ Usage
+1. Download or clone the repository. 2. Run the script by double-clicking the .bat file or typing
+`dns-tester.bat` in Command Prompt. 3. View the results with ranked average pings.
+■ DNS Servers Tested
+Provider IP Address(es)
+Google DNS 8.8.8.8 / 8.8.4.4
+Cloudflare 1.1.1.1 / 1.0.0.1
+Quad9 9.9.9.9 / 149.112.112.112
+OpenDNS 208.67.222.222 / 208.67.220.220
+AdGuard DNS 94.140.14.14 / 94.140.15.15
+Control D 76.76.2.0 / 76.76.10.0
+CleanBrowsing 185.228.168.9 / 185.228.169.9
+Alternate DNS 76.76.19.19 / 76.223.122.150
+■■ Requirements
+- Windows 7 / 10 / 11 - Command Prompt (cmd.exe) - Internet connection (to ping DNS servers)
+■ License
+This project is released under the MIT License.
+■■■ Author
+Created by YOUR NAME. If you find it helpful, give it a ■ on GitHub!
